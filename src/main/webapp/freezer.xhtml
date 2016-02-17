@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Speisekammer</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+</h:head>
+<h:body>
+    <p:menubar>
+        <p:menuitem value="Dashboard" outcome="index" />
+        <p:menuitem value="Speisekammer" outcome="pantry" />
+        <p:menuitem value="Tiefkühler" outcome="freezer" style="#{view.viewId=='/freezer.xhtml' ?
+    'background-color: #9BA1A3; border:1px solid #7096ab' : ''}"/>
+    </p:menubar>
+        <!-- content of tab1 goes here -->
+    <!--<h:form prependId="false">-->
+        <!--<p:growl id="growl" life="2000" />-->
+        <!--<span class="label label-info">Reminders</span>-->
+        <!--<h:panelGrid columns="2" cellpadding="5">-->
+            <!--<h:outputText value="Caption:"/> <input jsf:id="caption" placeholder="Enter the caption" type="text"-->
+                                                    <!--value="#{Index.todo.caption}" class="form-control"/>-->
+            <!--<h:outputText value="Description:"/> <p:inputText value="#{Index.todo.description}"/>-->
+            <!--<h:outputText value="Priority:"/> <p:inputText value="#{Index.todo.priority}"/>-->
+        <!--</h:panelGrid>-->
+        <!--<p:commandButton value="Save" action="#{Index.save}" update="growl, reminders"/>-->
+
+        <!--<p:dataList value="#{Index.toDos}" var="todo" type="ordered" id="reminders">-->
+            <!--<f:facet name="header">-->
+                <!--Reminders-->
+            <!--</f:facet>-->
+            <!--#{todo.caption}, #{todo.description}, #{todo.priority}-->
+        <!--</p:dataList>-->
+    <!--</h:form>-->
+</h:body>
+
+</html>
