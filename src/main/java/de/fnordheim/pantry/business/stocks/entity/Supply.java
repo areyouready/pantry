@@ -1,5 +1,9 @@
 package de.fnordheim.pantry.business.stocks.entity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -8,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by sebastianbasner on 17.02.16.
@@ -73,6 +80,10 @@ public class Supply {
 
    public void setQuantity(int quantity) {
       this.quantity = quantity;
+   }
+
+   public String getFormattedExpiryDate() {
+      return new SimpleDateFormat("dd.MM.yyyy").format(expiryDate);
    }
 
    public Date getExpiryDate() {

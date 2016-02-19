@@ -13,11 +13,50 @@
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
 </h:head>
 <h:body>
+    <h:form>
     <p:menubar>
         <p:menuitem value="Dashboard" outcome="index" />
         <p:menuitem value="Speisekammer" outcome="pantry" style="#{view.viewId=='/pantry.xhtml' ?
     'background-color: #9BA1A3; border:1px solid #7096ab' : ''}"/>
         <p:menuitem value="Tiefkühler" outcome="freezer" />
     </p:menubar>
+    </h:form>
+
+    <h:form prependId="false">
+        <p:growl id="growl" life="2000" />
+        <span class="label label-info">Speisekammer</span>
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputText value="Beschreibung" /> <input jsf:id="item" placeholder="Beschreibung eingeben" type="text"
+                                                         value="#{pantry.supply.item}" class="form-control" />
+            <h:outputText value="Gewicht" /> <input jsf:id="weight" placeholder="Gewicht eingeben" type="text"
+                                                    value="#{pantry.supply.weight}" class="form-control" />
+            <h:outputText value="Menge" /> <input jsf:id="quantity" placeholder="Menge eingeben" type="text"
+                                                  value="#{pantry.supply.quantity}" class="form-control" />
+            <p:outputLabel for="expiryDate" value="Ablaufdatum:" /> <p:calendar id="expiryDate" value="#{pantry.supply.expiryDate}"
+                                                                                locale="de" navigator="true" pattern="dd.MM.yyyy" />
+            <p:commandButton value="Save" action="#{pantry.save}" update="growl, supplies" />
+        </h:panelGrid>
+
+            <!--<h:outputText value="Ablaufdatum" /> <input jsf:id="expiryDate" placeholder="Ablaufdatum eingeben" type="text"-->
+            <!--value="#{pantry.supply.expiryDate}" class="form-control" />-->
+        <p:spacer height="50"/>
+        <p:dataTable var="supply" value="#{pantry.supplies}" style="margin-bottom:40px" id="supplies">
+            <f:facet name="header">
+                Speisekammer
+            </f:facet>
+            <p:column headerText="Beschreibung" sortBy="#{supply.item}" id="item">
+                <h:outputText value="#{supply.item}" />
+            </p:column>
+            <p:column headerText="Gewicht" sortBy="#{supply.weight}">
+                <h:outputText value="#{supply.weight}" />
+            </p:column>
+            <p:column headerText="Ablaufdatum" sortBy="#{supply.formattedExpiryDate}">
+                <h:outputText value="#{supply.formattedExpiryDate}" />
+            </p:column>
+            <p:column headerText="Menge" sortBy="#{supply.quantity}">
+                <h:outputText value="#{supply.quantity}" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
 </h:body>
 </html>
