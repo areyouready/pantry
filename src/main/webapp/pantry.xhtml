@@ -37,8 +37,6 @@
             <p:commandButton value="Save" action="#{pantry.save}" update="growl, supplies" />
         </h:panelGrid>
 
-            <!--<h:outputText value="Ablaufdatum" /> <input jsf:id="expiryDate" placeholder="Ablaufdatum eingeben" type="text"-->
-            <!--value="#{pantry.supply.expiryDate}" class="form-control" />-->
         <p:spacer height="50"/>
         <p:dataTable var="supply" value="#{pantry.supplies}" style="margin-bottom:40px" id="supplies">
             <f:facet name="header">

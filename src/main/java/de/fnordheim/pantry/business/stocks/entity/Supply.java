@@ -83,7 +83,10 @@ public class Supply {
    }
 
    public String getFormattedExpiryDate() {
-      return new SimpleDateFormat("dd.MM.yyyy").format(expiryDate);
+      if (expiryDate != null) {
+         return new SimpleDateFormat("dd.MM.yyyy").format(expiryDate);
+      }
+      return " ";
    }
 
    public Date getExpiryDate() {
