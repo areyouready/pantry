@@ -13,34 +13,60 @@
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
 </h:head>
 <h:body>
-    <h:form>
-    <p:menubar>
-        <p:menuitem value="Dashboard" outcome="index" />
-        <p:menuitem value="Speisekammer" outcome="pantry" style="#{view.viewId=='/pantry.xhtml' ?
-    'background-color: #9BA1A3; border:1px solid #7096ab' : ''}"/>
-        <p:menuitem value="Tiefkühler" outcome="freezer" />
-    </p:menubar>
-    </h:form>
+    <nav class="navbar navbar-default" >
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Pantry</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="index.xhtml">Dashboard</a></li>
+                <li class="active"><a href="#">Speisekammer<span class="sr-only">(current)</span></a></li>
+                <li><a href="freezer.xhtml">Tiefkühler</a></li>
+            </ul>
+        </div>
+    </nav>
+
 
     <h:form prependId="false">
         <p:growl id="growl" life="2000" />
-        <span class="label label-info">Speisekammer</span>
-        <h:panelGrid columns="2" cellpadding="5">
-            <h:outputText value="Beschreibung" /> <input jsf:id="item" placeholder="Beschreibung eingeben" type="text"
-                                                         value="#{pantry.supply.item}" class="form-control" />
-            <h:outputText value="Gewicht" /> <input jsf:id="weight" placeholder="Gewicht eingeben" type="text"
-                                                    value="#{pantry.supply.weight}" class="form-control" />
-            <h:outputText value="Menge" /> <input jsf:id="quantity" placeholder="Menge eingeben" type="text"
-                                                  value="#{pantry.supply.quantity}" class="form-control" />
-            <p:outputLabel for="expiryDate" value="Ablaufdatum:" /> <p:calendar id="expiryDate" value="#{pantry.supply.expiryDate}"
-                                                                                locale="de" navigator="true" pattern="dd.MM.yyyy" />
-            <p:commandButton value="Save" action="#{pantry.save}" update="growl, supplies" />
-        </h:panelGrid>
+        <p:dialog header="Vorräte eingeben" widgetVar="dlg1" minHeight="140">
+        <div class="panel panel-default">
+            <div class="panel-heading">Neue Vorräte eingeben</div>
+            <div class="panel-body">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputText value="Beschreibung" /> <input jsf:id="item" placeholder="Beschreibung eingeben" type="text"
+                                                                 value="#{pantry.supply.item}" class="form-control" />
+                    <h:outputText value="Gewicht" /> <input jsf:id="weight" placeholder="Gewicht eingeben" type="text"
+                                                            value="#{pantry.supply.weight}" class="form-control" />
+                    <h:outputText value="Menge" /> <input jsf:id="quantity" placeholder="Menge eingeben" type="text"
+                                                          value="#{pantry.supply.quantity}" class="form-control" />
+                    <p:outputLabel for="expiryDate" value="Ablaufdatum:" /> <p:calendar id="expiryDate" value="#{pantry.supply.expiryDate}"
+                                                                                        locale="de" navigator="true" pattern="dd.MM.yyyy" />
+                    <p:spacer height="10"/>
+                    <f:facet name="footer">
+                        <h:panelGroup style="display:block; text-align:right">
+                        <p:commandButton value="Save" class="btn btn-primary" action="#{pantry.save}" update="growl, supplies" style="float: right" />
+                        </h:panelGroup>
+                    </f:facet>
+                </h:panelGrid>
+            </div>
+        </div>
+        </p:dialog>
 
-        <p:spacer height="50"/>
-        <p:dataTable var="supply" value="#{pantry.supplies}" style="margin-bottom:40px" id="supplies">
+        <p:spacer height="10"/>
+        <p:dataTable var="supply" value="#{pantry.supplies}" style="margin-bottom:40px" id="supplies"
+                     >
             <f:facet name="header">
                 Speisekammer
+                <p:commandButton value="Neue Vorräte" type="button" style="float:right"
+                                 onclick="PF('dlg1').show();" />
+                <div style="clear:both;"/>
             </f:facet>
             <p:column headerText="Beschreibung" sortBy="#{supply.item}" id="item">
                 <h:outputText value="#{supply.item}" />
@@ -55,6 +81,7 @@
                 <h:outputText value="#{supply.quantity}" />
             </p:column>
         </p:dataTable>
+        <p:commandButton value="Neue Vorräte" type="button" class="btn btn-default" style="float: right" onclick="PF('dlg1').show();" />
     </h:form>
 </h:body>
 </html>

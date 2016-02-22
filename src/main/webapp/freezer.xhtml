@@ -3,9 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:jsf="http://xmlns.jcp.org/jsf"
-      xmlns:p="http://primefaces.org/ui">
+>
 <h:head>
     <title>Speisekammer</title>
     <!-- Latest compiled and minified CSS -->
@@ -13,31 +11,26 @@
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
 </h:head>
 <h:body>
-    <p:menubar>
-        <p:menuitem value="Dashboard" outcome="index" />
-        <p:menuitem value="Speisekammer" outcome="pantry" />
-        <p:menuitem value="Tiefkühler" outcome="freezer" style="#{view.viewId=='/freezer.xhtml' ?
-    'background-color: #9BA1A3; border:1px solid #7096ab' : ''}"/>
-    </p:menubar>
-        <!-- content of tab1 goes here -->
-    <!--<h:form prependId="false">-->
-        <!--<p:growl id="growl" life="2000" />-->
-        <!--<span class="label label-info">Reminders</span>-->
-        <!--<h:panelGrid columns="2" cellpadding="5">-->
-            <!--<h:outputText value="Caption:"/> <input jsf:id="caption" placeholder="Enter the caption" type="text"-->
-                                                    <!--value="#{Index.todo.caption}" class="form-control"/>-->
-            <!--<h:outputText value="Description:"/> <p:inputText value="#{Index.todo.description}"/>-->
-            <!--<h:outputText value="Priority:"/> <p:inputText value="#{Index.todo.priority}"/>-->
-        <!--</h:panelGrid>-->
-        <!--<p:commandButton value="Save" action="#{Index.save}" update="growl, reminders"/>-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Pantry</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="index.xhtml">Dashboard</a></li>
+                <li><a href="pantry.xhtml">Speisekammer</a></li>
+                <li class="active"><a href="#">Tiefkühler<span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <!--<p:dataList value="#{Index.toDos}" var="todo" type="ordered" id="reminders">-->
-            <!--<f:facet name="header">-->
-                <!--Reminders-->
-            <!--</f:facet>-->
-            <!--#{todo.caption}, #{todo.description}, #{todo.priority}-->
-        <!--</p:dataList>-->
-    <!--</h:form>-->
+
 </h:body>
 
 </html>
