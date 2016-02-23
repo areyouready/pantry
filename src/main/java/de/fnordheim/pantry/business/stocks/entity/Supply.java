@@ -1,9 +1,6 @@
 package de.fnordheim.pantry.business.stocks.entity;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -12,9 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by sebastianbasner on 17.02.16.
@@ -22,6 +16,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @NamedQuery(name = Supply.findAll, query = "SELECT s FROM Supply s")
 public class Supply {
+
+   public enum SupplyType {
+      PANTRY,
+      FREEZER
+   }
 
    @Id
    @GeneratedValue
@@ -39,20 +38,23 @@ public class Supply {
    private int quantity;
    private Date expiryDate;
    private Date freezeDate;
+   private SupplyType supplyType;
 
-   public Supply(String item, int weight, int quantity, Date expiryDate) {
+   public Supply(String item, int weight, int quantity, Date expiryDate, SupplyType supplyType) {
       this.item = item;
       this.weight = weight;
       this.quantity = quantity;
       this.expiryDate = expiryDate;
+      this.supplyType = supplyType;
    }
 
-   public Supply(String item, int weight, int quantity, Date expiryDate, Date freezeDate) {
+   public Supply(String item, int weight, int quantity, Date expiryDate, Date freezeDate, SupplyType supplyType) {
       this.item = item;
       this.weight = weight;
       this.quantity = quantity;
       this.expiryDate = expiryDate;
       this.freezeDate = freezeDate;
+      this.supplyType = supplyType;
    }
 
    public Supply() {
@@ -111,6 +113,14 @@ public class Supply {
 
    public void setId(long id) {
       this.id = id;
+   }
+
+   public SupplyType getSupplyType() {
+      return supplyType;
+   }
+
+   public void setSupplyType(SupplyType supplyType) {
+      this.supplyType = supplyType;
    }
 
    @Override

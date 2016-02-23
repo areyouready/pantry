@@ -4,10 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -16,11 +14,13 @@ import javax.validation.Validator;
 
 import de.fnordheim.pantry.business.stocks.boundary.SupplyManager;
 import de.fnordheim.pantry.business.stocks.entity.Supply;
+import de.fnordheim.pantry.business.stocks.entity.Supply.SupplyType;
 
 /**
  * Created by sebastianbasner on 17.02.16.
  */
-@Model
+@ManagedBean
+@ViewScoped
 public class Pantry {
    @Inject
    SupplyManager boundary;
@@ -44,8 +44,10 @@ public class Pantry {
       }
 
       if (violations.isEmpty()) {
+         this.supply.setSupplyType(SupplyType.PANTRY);
          this.boundary.save(supply);
          this.supplyList = null; //forces reload of supplies to show the newly inserted supply
+         this.supply = null;
       }
       return null;
    }
@@ -53,6 +55,11 @@ public class Pantry {
    public void showValidationError(String content) {
       FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, content, content);
       FacesContext.getCurrentInstance().addMessage("", message);
+   }
+
+   public void add() {
+      System.out.println("test");
+      this.supply = null;
    }
 
    public List<Supply> getSupplies() {
@@ -63,6 +70,13 @@ public class Pantry {
    }
 
    public Supply getSupply() {
-      return supply;
+      if (this.supply == null) {
+         this.supply = new Supply();
+      }
+      return this.supply;
+   }
+
+   public void setSupply(Supply supply) {
+      this.supply = supply;
    }
 }
