@@ -36,6 +36,11 @@ public class Pantry {
       this.supply = new Supply();
    }
 
+   public void showValidationError(String content) {
+      FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, content, content);
+      FacesContext.getCurrentInstance().addMessage("", message);
+   }
+
    public Object save() {
       final Set<ConstraintViolation<Supply>> violations = this.validator.validate(this.supply);
 
@@ -52,10 +57,11 @@ public class Pantry {
       return null;
    }
 
-   public void showValidationError(String content) {
-      FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, content, content);
-      FacesContext.getCurrentInstance().addMessage("", message);
+   public void delete() {
+      this.boundary.delete(this.supply.getId());
+      this.supplyList = null;
    }
+
 
    public void add() {
       System.out.println("test");

@@ -51,10 +51,12 @@
                                                                                         locale="de" navigator="true" pattern="dd.MM.yyyy"
                                                                                         tabindex="4"/>
                     <p:spacer height="10"/>
-                        <p:commandButton id="save" value="Save" class="btn btn-primary" action="#{pantry.save}"
-                                         update="growl, supplies"
-                                         style="float: right" resetValues="true" tabindex="5">
-                        </p:commandButton>
+                    <f:facet name="footer">
+                        <h:panelGroup style="display:block; text-align:right">
+                            <p:commandButton value="Save" class="btn btn-primary" action="#{pantry.save}" update="growl, supplies"
+                                             style="float: right" tabindex="5"/>
+                        </h:panelGroup>
+                    </f:facet>
                 </h:panelGrid>
             </div>
         </div>
@@ -83,15 +85,22 @@
             <p:column headerText="Menge" sortBy="#{supply.quantity}">
                 <h:outputText value="#{supply.quantity}" />
             </p:column>
-            <p:column style="width:50px; text-align: center">
+            <p:column style="width:100px; text-align: center">
                 <p:commandButton update=":editDialog" oncomplete="PF('dlg1').show()" icon="ui-icon-search"
                                  title="View">
+                    <f:setPropertyActionListener value="#{supply}" target="#{pantry.supply}" />
+                </p:commandButton>
+                <p:commandButton icon="ui-icon-trash"
+                                 title="Delete this actor"
+                                 action="#{pantry.delete}"
+                                 ajax="false"
+                                 update="supplies">
                     <f:setPropertyActionListener value="#{supply}" target="#{pantry.supply}" />
                 </p:commandButton>
             </p:column>
         </p:dataTable>
         <p:commandButton value="Neue Vorräte" class="btn btn-default" style="float: right"
-                         action="#{pantry.add}" onsuccess="PF('dlg1').show()" >
+                         action="#{pantry.add}" onsuccess="PF('dlg1').show()" update=":editForm:editGrid">
         </p:commandButton>
     </h:form>
 </h:body>
