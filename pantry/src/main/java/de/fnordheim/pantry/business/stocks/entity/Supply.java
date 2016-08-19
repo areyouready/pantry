@@ -1,14 +1,10 @@
 package de.fnordheim.pantry.business.stocks.entity;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by sebastianbasner on 17.02.16.
@@ -16,11 +12,6 @@ import javax.validation.constraints.Size;
 @Entity
 @NamedQuery(name = Supply.findAll, query = "SELECT s FROM Supply s")
 public class Supply {
-
-   public enum SupplyType {
-      PANTRY,
-      FREEZER
-   }
 
    @Id
    @GeneratedValue
@@ -38,6 +29,7 @@ public class Supply {
    private int quantity;
    private Date expiryDate;
    private Date freezeDate;
+   @Enumerated(EnumType.STRING)
    private SupplyType supplyType;
 
    public Supply(String item, int weight, int quantity, Date expiryDate, SupplyType supplyType) {
