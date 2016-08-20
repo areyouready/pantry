@@ -1,12 +1,11 @@
 package de.fnordheim.pantry.business.stocks.boundary;
 
-import java.util.List;
+import de.fnordheim.pantry.business.stocks.entity.Supply;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import de.fnordheim.pantry.business.stocks.entity.Supply;
+import java.util.List;
 
 /**
  * Created by sebastianbasner on 18.02.16.
@@ -15,6 +14,7 @@ import de.fnordheim.pantry.business.stocks.entity.Supply;
 public class SupplyManager {
 
    @PersistenceContext
+   private
    EntityManager em;
 
    public List<Supply> all() {

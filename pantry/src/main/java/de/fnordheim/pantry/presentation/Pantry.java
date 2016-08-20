@@ -28,7 +28,7 @@ public class Pantry implements Serializable {
     @Inject
     SupplyManager boundary;
 
-    Supply supply;
+    private Supply supply;
 
     @Inject
     Validator validator;
@@ -39,7 +39,7 @@ public class Pantry implements Serializable {
         this.supply = new Supply();
     }
 
-    public void showValidationError(String content) {
+    private void showValidationError(String content) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, content, content);
         FacesContext.getCurrentInstance().addMessage("", message);
     }

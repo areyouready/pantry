@@ -19,7 +19,7 @@ public class Supply {
 
    private long version;
 
-   static final String PREFIX = "de.fnordheim.pantry.business.stocks.entity.Supply";
+   private static final String PREFIX = "de.fnordheim.pantry.business.stocks.entity.Supply";
    public static final String findAll = PREFIX + "findAll";
 
    @NotNull
