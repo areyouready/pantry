@@ -66,7 +66,9 @@
 
         <p:spacer height="10"/>
     <h:form prependId="false" id="tableform">
-        <p:dataTable var="supply" value="#{pantry.supplies}" style="margin-bottom:40px" id="supplies">
+        <p:dataTable var="supply" value="#{pantry.supplies}" rows="10" paginator="true"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     rowsPerPageTemplate="5,10,15" style="margin-bottom:40px" id="supplies">
             <f:facet name="header">
                 Speisekammer
                 <p:commandButton value="Neue Vorräte" actionListener="#{pantry.add}" style="float:right"
