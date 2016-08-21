@@ -1,6 +1,7 @@
 package de.fnordheim.pantry.business.stocks.boundary;
 
 import de.fnordheim.pantry.business.stocks.entity.Supply;
+import de.fnordheim.pantry.business.stocks.entity.SupplyType;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,6 +20,10 @@ public class SupplyManager {
 
    public List<Supply> all() {
       return this.em.createNamedQuery(Supply.findAll, Supply.class).getResultList();
+   }
+
+   public List<Supply> findByType(final SupplyType supplyType) {
+      return this.em.createNamedQuery(Supply.findByType, Supply.class).setParameter("supplyType", supplyType).getResultList();
    }
 
    public Supply findById(long id) {

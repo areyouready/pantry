@@ -73,7 +73,7 @@ public class Pantry implements Serializable {
 
     public List<Supply> getSupplies() {
         if(this.supplyList == null) {
-            this.supplyList = this.boundary.all();
+            this.supplyList = this.boundary.findByType(SupplyType.PANTRY);
         }
         return this.supplyList;
     }
