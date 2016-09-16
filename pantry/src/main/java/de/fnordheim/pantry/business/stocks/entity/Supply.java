@@ -125,6 +125,15 @@ public class Supply {
         this.supplyType = supplyType;
     }
 
+    //TODO[SB] implement crosscheck where isValid checks if freeze date is empty when supply type is pantry
+//    @Override
+//    public boolean isValid() {
+//        if (this.supplyType == SupplyType.PANTRY) {
+//            return this.freezeDate == null;
+//        }
+//        return true;
+//    }
+
     @Override
     public String toString() {
         return "Supply{" +
@@ -137,4 +146,5 @@ public class Supply {
                 ", freezeDate=" + freezeDate +
                 '}';
     }
+
 }
