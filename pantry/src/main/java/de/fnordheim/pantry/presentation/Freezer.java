@@ -1,8 +1,8 @@
 package de.fnordheim.pantry.presentation;
 
 import de.fnordheim.pantry.business.stocks.boundary.SupplyManager;
+import de.fnordheim.pantry.business.stocks.entity.FreezerSupply;
 import de.fnordheim.pantry.business.stocks.entity.Supply;
-import de.fnordheim.pantry.business.stocks.entity.SupplyType;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -25,15 +25,16 @@ public class Freezer {
    @Inject
    SupplyManager boundary;
 
-   private Supply supply;
+   private FreezerSupply supply;
 
    @Inject
    Validator validator;
+
    private List<Supply> supplyList;
 
    @PostConstruct
    public void init() {
-      this.supply = new Supply();
+      this.supply = new FreezerSupply();
    }
 
    private void showValidationError(String content) {
@@ -49,7 +50,6 @@ public class Freezer {
       }
 
       if (violations.isEmpty()) {
-         this.supply.setSupplyType(SupplyType.FREEZER);
          this.boundary.save(supply);
          this.supplyList = null; //forces reload of supplies to show the newly inserted supply
          this.supply = null;
@@ -69,19 +69,19 @@ public class Freezer {
 
    public List<Supply> getSupplies() {
       if(this.supplyList == null) {
-         this.supplyList = this.boundary.findByType(SupplyType.FREEZER);
+         this.supplyList = this.boundary.findByType(FreezerSupply.class);
       }
       return this.supplyList;
    }
 
    public Supply getSupply() {
       if (this.supply == null) {
-         this.supply = new Supply();
+         this.supply = new FreezerSupply();
       }
       return this.supply;
    }
 
-   public void setSupply(Supply supply) {
+   public void setSupply(FreezerSupply supply) {
       this.supply = supply;
    }
 }

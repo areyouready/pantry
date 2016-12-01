@@ -1,8 +1,8 @@
 package de.fnordheim.pantry.presentation;
 
 import de.fnordheim.pantry.business.stocks.boundary.SupplyManager;
+import de.fnordheim.pantry.business.stocks.entity.PantrySupply;
 import de.fnordheim.pantry.business.stocks.entity.Supply;
-import de.fnordheim.pantry.business.stocks.entity.SupplyType;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -28,15 +28,16 @@ public class Pantry implements Serializable {
     @Inject
     SupplyManager boundary;
 
-    private Supply supply;
+    private PantrySupply supply;
 
     @Inject
     Validator validator;
+
     private List<Supply> supplyList;
 
     @PostConstruct
     public void init() {
-        this.supply = new Supply();
+        this.supply = new PantrySupply();
     }
 
     private void showValidationError(String content) {
@@ -52,7 +53,6 @@ public class Pantry implements Serializable {
         }
 
         if (violations.isEmpty()) {
-            this.supply.setSupplyType(SupplyType.PANTRY);
             this.boundary.save(supply);
             this.supplyList = null; //forces reload of supplies to show the newly inserted supply
             this.supply = null;
@@ -67,25 +67,24 @@ public class Pantry implements Serializable {
 
 
     public void add() {
-        System.out.println("test");
         this.supply = null;
     }
 
     public List<Supply> getSupplies() {
         if(this.supplyList == null) {
-            this.supplyList = this.boundary.findByType(SupplyType.PANTRY);
+            this.supplyList = this.boundary.findByType(PantrySupply.class);
         }
         return this.supplyList;
     }
 
     public Supply getSupply() {
         if (this.supply == null) {
-            this.supply = new Supply();
+            this.supply = new PantrySupply();
         }
         return this.supply;
     }
 
-    public void setSupply(Supply supply) {
+    public void setSupply(PantrySupply supply) {
         this.supply = supply;
     }
 }
