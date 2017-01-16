@@ -14,8 +14,7 @@ import java.util.List;
 public class SupplyManager {
 
    @PersistenceContext
-   private
-   EntityManager em;
+   private EntityManager em;
 
    public List<Supply> all() {
       return this.em.createNamedQuery(Supply.findAll, Supply.class).getResultList();
