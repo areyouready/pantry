@@ -12,6 +12,8 @@
         <!--<param-name>facelets.SKIP_COMMENTS</param-name>-->
         <!--<param-value>true</param-value>-->
     <!--</context-param>-->
+
+    <!--JSF config-->
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -29,6 +31,10 @@
         <session-timeout>
             30
         </session-timeout>
+        <!--Removes JSessionID in URL after logout-->
+        <tracking-mode>
+            COOKIE
+        </tracking-mode>
     </session-config>
     <!--<welcome-file-list>-->
         <!--<welcome-file>faces/index.xhtml</welcome-file>-->
@@ -36,4 +42,22 @@
     <welcome-file-list>
         <welcome-file>/index.xhtml</welcome-file>
     </welcome-file-list>
+
+    <!--Apache SHIRO config-->
+    <listener>
+        <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
 </web-app>
