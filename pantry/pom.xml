@@ -105,6 +105,36 @@
         </dependency>
 
     </dependencies>
+
+
+    <profiles>
+        <profile>
+            <id>set_datasource</id>
+            <build>
+                <!-- enable resource filter to set the datasource name -->
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+        <profile>
+            <id>db_dev</id>
+            <properties>
+                <datasource.name>ExampleDS</datasource.name>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>db_prod</id>
+            <properties>
+                <datasource.name>ExampleMySQLDS</datasource.name>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <finalName>pantry</finalName>
     </build>

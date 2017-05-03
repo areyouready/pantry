@@ -24,11 +24,16 @@
             </button>
             <a class="navbar-brand" href="#">Pantry</a>
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-right: 20px">
             <ul class="nav navbar-nav">
                 <li><a href="index.xhtml">Dashboard</a></li>
                 <li><a href="pantry.xhtml">Speisekammer</a></li>
                 <li class="active"><a href="#">Tiefkühler<span class="sr-only">(current)</span></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <h:form>
+                    <h:commandButton value="Logout" class="btn btn-default" id="logout" actionListener="#{logout.submit}" ajax="false" />
+                </h:form>
             </ul>
         </div>
     </nav>

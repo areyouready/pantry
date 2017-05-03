@@ -6,8 +6,8 @@ target-eclipse
 /target
 /target/*
 /target/*/*
-persistence.xml
-beans.xml
+#persistence.xml
+#beans.xml
 
 
 # Maven
