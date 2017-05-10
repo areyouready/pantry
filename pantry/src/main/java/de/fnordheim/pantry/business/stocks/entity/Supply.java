@@ -18,7 +18,7 @@ import java.util.Date;
 public abstract class Supply {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     private long version;
