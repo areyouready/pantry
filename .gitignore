@@ -41,8 +41,5 @@ logs
 # java
 *.class
 
-#shiro
-**/shiro.ini
-
 # generated css
 web-app/css/application.css

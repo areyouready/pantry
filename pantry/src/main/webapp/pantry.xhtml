@@ -9,7 +9,7 @@
 <h:head>
     <title>Speisekammer</title>
     <!-- Latest compiled and minified CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
 </h:head>
 <h:body>
@@ -58,7 +58,8 @@
                             <p:spacer height="10"/>
                             <f:facet name="footer">
                                 <h:panelGroup style="display:block; text-align:right">
-                                    <p:commandButton value="Save" class="btn btn-primary" action="#{pantry.save}" update="growl, supplies"
+                                    <p:commandButton value="Save" class="btn btn-default btn-lg" action="#{pantry.save}"
+                                                     update="growl, supplies"
                                                      style="float: right" tabindex="5"/>
                                 </h:panelGroup>
                             </f:facet>
