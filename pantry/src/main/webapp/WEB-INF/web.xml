@@ -43,6 +43,17 @@
         <welcome-file>/index.xhtml</welcome-file>
     </welcome-file-list>
 
+    <!--Redirect http to https-->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>pantry</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
     <!--Apache SHIRO config-->
     <listener>
         <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
