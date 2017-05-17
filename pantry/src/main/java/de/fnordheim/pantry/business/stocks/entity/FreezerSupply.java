@@ -13,7 +13,7 @@ import java.util.Date;
 @DiscriminatorValue("FREEZER")
 public class FreezerSupply extends Supply {
 
-    @NotNull
+    @NotNull(message = "freeze date can not be null.")
     private Date freezeDate;
 
     public String getFormattedFreezeDate() {

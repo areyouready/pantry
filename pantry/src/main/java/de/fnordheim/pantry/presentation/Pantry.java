@@ -48,9 +48,7 @@ public class Pantry implements Serializable {
     public Object save() {
         final Set<ConstraintViolation<Supply>> violations = this.validator.validate(this.supply);
 
-        for(ConstraintViolation violation : violations) {
-            this.showValidationError(violation.getMessage());
-        }
+        violations.forEach(s -> this.showValidationError(s.getMessage()));
 
         if (violations.isEmpty()) {
             this.boundary.save(supply);

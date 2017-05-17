@@ -27,8 +27,9 @@ public abstract class Supply {
     public static final String findAll = PREFIX + "findAll";
     public static final String findByType = PREFIX + "findByType";
 
-    @NotNull
-    @Size(min = 2, max = 256)
+    //calling validate manually needs message after @NotNull while bound parameters in JSF need message behind @Size
+    @NotNull(message = "name must be between 2 and 256 characters.")
+    @Size(min = 2, max = 256, message = "name must be between 2 and 256 characters.")
     private String item;
     private int weight;
     private int quantity;

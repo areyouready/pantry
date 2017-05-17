@@ -39,7 +39,7 @@
     </nav>
 
 
-    <p:growl id="growl" life="2000" />
+    <p:growl id="growl" life="4000" />
     <h:form prependId="false" id="editForm">
         <p:dialog header="Vorräte eingeben" widgetVar="dlg1" minHeight="140" id="editDialog">
             <p:outputPanel id="supplyDetail" style="text-align:center;">
@@ -48,12 +48,12 @@
                     <div class="panel-body">
                         <h:panelGrid columns="2" cellpadding="5" id="editGrid">
                             <h:outputText value="Beschreibung" /> <input jsf:id="item" placeholder="Beschreibung eingeben" type="text"
-                                                                         value="#{freezer.supply.item}" class="form-control" tabindex="1"/>
+                                                                          class="form-control" tabindex="1"/>
                             <h:outputText value="Gewicht" /> <input jsf:id="weight" placeholder="Gewicht eingeben" type="text"
                                                                     value="#{freezer.supply.weight}" class="form-control" tabindex="2"/>
                             <h:outputText value="Menge" /> <input jsf:id="quantity" placeholder="Menge eingeben" type="text"
                                                                   value="#{freezer.supply.quantity}" class="form-control" tabindex="3"/>
-                            <p:outputLabel for="freezeDate" value="Einfrierdatum:" /> <p:calendar id="freezeDate" value="#{freezer.supply.freezeDate}"
+                            <p:outputLabel for="freezeDate" value="Einfrierdatum:" /> <p:calendar id="freezeDate"
                                                                                                 locale="de" navigator="true" pattern="dd.MM.yyyy"
                                                                                                 tabindex="4"/>
                             <p:outputLabel for="expiryDate" value="Ablaufdatum:" /> <p:calendar id="expiryDate" value="#{freezer.supply.expiryDate}"
@@ -64,7 +64,7 @@
                                 <h:panelGroup style="display:block; text-align:right">
                                     <p:commandButton value="Save" class="btn btn-default btn-lg" action="#{freezer.save}"
                                                      update="growl, supplies"
-                                                     style="float: right" tabindex="5"/>
+                                                     style="float: right" tabindex="6"/>
                                 </h:panelGroup>
                             </f:facet>
                         </h:panelGrid>

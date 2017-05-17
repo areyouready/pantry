@@ -38,16 +38,14 @@ public class Freezer {
    }
 
    private void showValidationError(String content) {
-      FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, content, content);
+      FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_FATAL, content, content);
       FacesContext.getCurrentInstance().addMessage("", message);
    }
 
    public Object save() {
       final Set<ConstraintViolation<Supply>> violations = this.validator.validate(this.supply);
 
-      for(ConstraintViolation violation : violations) {
-         this.showValidationError(violation.getMessage());
-      }
+      violations.forEach(s -> this.showValidationError(s.getMessage()));
 
       if (violations.isEmpty()) {
          this.boundary.save(supply);
