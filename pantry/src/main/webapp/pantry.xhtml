@@ -39,8 +39,9 @@
 
 
     <p:growl id="growl" life="4000" />
-    <h:form prependId="false" id="editForm">
-        <p:dialog header="Vorräte eingeben" widgetVar="dlg1" minHeight="140" id="editDialog">
+
+    <p:dialog header="Vorräte eingeben" widgetVar="dlg1" minHeight="140" id="editDialog">
+        <h:form prependId="false" id="editForm">
             <p:outputPanel id="supplyDetail" style="text-align:center;">
                 <div class="panel panel-default">
                     <div class="panel-heading">Neue Vorräte eingeben</div>
@@ -67,8 +68,8 @@
                     </div>
                 </div>
             </p:outputPanel>
-        </p:dialog>
-    </h:form>
+        </h:form>
+    </p:dialog>
 
     <p:spacer height="10"/>
     <h:form prependId="false" id="tableform">
