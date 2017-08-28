@@ -1,4 +1,4 @@
-package de.fnordheim.pantry.business.logging.boundary;
+package de.fnortheim.pantry.business.logging.boundary;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;

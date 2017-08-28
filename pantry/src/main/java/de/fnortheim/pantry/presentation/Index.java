@@ -1,4 +1,4 @@
-package de.fnordheim.pantry.presentation;
+package de.fnortheim.pantry.presentation;
 
 /**
  * Created by sebastianbasner on 17.02.16.

@@ -1,4 +1,4 @@
-package de.fnordheim.pantry.business;
+package de.fnortheim.pantry.business;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;

@@ -1,4 +1,4 @@
-package de.fnordheim.pantry.business;
+package de.fnortheim.pantry.business;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

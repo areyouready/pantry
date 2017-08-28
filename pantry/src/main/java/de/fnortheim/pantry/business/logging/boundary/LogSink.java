@@ -1,4 +1,4 @@
-package de.fnordheim.pantry.business.logging.boundary;
+package de.fnortheim.pantry.business.logging.boundary;
 
 /**
  * Created by sebastianbasner on 17.05.17.

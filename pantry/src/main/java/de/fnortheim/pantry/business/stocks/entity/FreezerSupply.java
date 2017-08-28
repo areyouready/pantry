@@ -1,4 +1,4 @@
-package de.fnordheim.pantry.business.stocks.entity;
+package de.fnortheim.pantry.business.stocks.entity;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

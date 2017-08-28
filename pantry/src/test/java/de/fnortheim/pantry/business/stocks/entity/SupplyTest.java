@@ -1,4 +1,4 @@
-package de.fnordheim.pantry.business.stocks.entity;
+package de.fnortheim.pantry.business.stocks.entity;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,9 +12,6 @@ import java.util.Set;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import de.fnordheim.pantry.business.stocks.entity.PantrySupply;
-import de.fnordheim.pantry.business.stocks.entity.Supply;
 
 /**
  * Created by sebastianbasner on 16.09.16.

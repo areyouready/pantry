@@ -43,3 +43,4 @@ logs
 
 # generated css
 web-app/css/application.css
+/pantry/target

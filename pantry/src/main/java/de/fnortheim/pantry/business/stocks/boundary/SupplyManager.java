@@ -1,6 +1,6 @@
-package de.fnordheim.pantry.business.stocks.boundary;
+package de.fnortheim.pantry.business.stocks.boundary;
 
-import de.fnordheim.pantry.business.stocks.entity.Supply;
+import de.fnortheim.pantry.business.stocks.entity.Supply;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

@@ -1,4 +1,4 @@
-package de.fnordheim.pantry.business.stocks.entity;
+package de.fnortheim.pantry.business.stocks.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -23,7 +23,7 @@ public abstract class Supply {
 
     private long version;
 
-    private static final String PREFIX = "de.fnordheim.pantry.business.stocks.entity.Supply";
+    private static final String PREFIX = "Supply";
     public static final String findAll = PREFIX + "findAll";
     public static final String findByType = PREFIX + "findByType";
 

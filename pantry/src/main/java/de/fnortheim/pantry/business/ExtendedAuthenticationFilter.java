@@ -1,4 +1,4 @@
-package de.fnordheim.pantry.business;
+package de.fnortheim.pantry.business;
 
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.subject.Subject;

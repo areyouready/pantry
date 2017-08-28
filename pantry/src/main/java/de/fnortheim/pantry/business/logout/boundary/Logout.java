@@ -1,6 +1,6 @@
-package de.fnordheim.pantry.business.logout.boundary;
+package de.fnortheim.pantry.business.logout.boundary;
 
-import de.fnordheim.pantry.business.logging.boundary.LogSink;
+import de.fnortheim.pantry.business.logging.boundary.LogSink;
 import org.apache.shiro.SecurityUtils;
 
 import javax.enterprise.context.RequestScoped;

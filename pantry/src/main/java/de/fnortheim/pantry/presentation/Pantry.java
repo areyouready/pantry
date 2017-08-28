@@ -1,8 +1,8 @@
-package de.fnordheim.pantry.presentation;
+package de.fnortheim.pantry.presentation;
 
-import de.fnordheim.pantry.business.stocks.boundary.SupplyManager;
-import de.fnordheim.pantry.business.stocks.entity.PantrySupply;
-import de.fnordheim.pantry.business.stocks.entity.Supply;
+import de.fnortheim.pantry.business.stocks.boundary.SupplyManager;
+import de.fnortheim.pantry.business.stocks.entity.PantrySupply;
+import de.fnortheim.pantry.business.stocks.entity.Supply;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
