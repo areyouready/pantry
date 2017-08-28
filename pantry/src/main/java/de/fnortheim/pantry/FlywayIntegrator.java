@@ -16,12 +16,12 @@ import javax.ejb.*;
 @Singleton
 @Startup
 @TransactionManagement(value = TransactionManagementType.BEAN)
-class FlywayIntegrator {
+public class FlywayIntegrator {
 
     private final Logger log = LoggerFactory.getLogger(FlywayIntegrator.class);
 
     // inject actual datasource
-    @Resource
+    @Resource(name = "${datasource.name}")
     private javax.sql.DataSource dataSource;
 
     @PostConstruct

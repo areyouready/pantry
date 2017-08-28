@@ -72,7 +72,7 @@ public class Freezer {
       return this.supplyList;
    }
 
-   public Supply getSupply() {
+   public FreezerSupply getSupply() {
       if (this.supply == null) {
          this.supply = new FreezerSupply();
       }
