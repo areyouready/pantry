@@ -33,6 +33,7 @@ public abstract class Supply {
     private String item;
     private int weight;
     private int quantity;
+    @Temporal(TemporalType.DATE)
     private Date expiryDate;
 
     public String getItem() {

@@ -2,6 +2,8 @@ package de.fnortheim.pantry.business.stocks.entity;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,6 +16,7 @@ import java.util.Date;
 public class FreezerSupply extends Supply {
 
     @NotNull(message = "freeze date can not be null.")
+    @Temporal(TemporalType.DATE)
     private Date freezeDate;
 
     public String getFormattedFreezeDate() {
