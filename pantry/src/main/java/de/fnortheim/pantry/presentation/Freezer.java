@@ -12,6 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
@@ -20,7 +21,9 @@ import java.util.Set;
  */
 @ManagedBean
 @ViewScoped
-public class Freezer {
+public class Freezer implements Serializable {
+
+   private static final long serialVersionUID = 6033816072558861095L;
 
    @Inject
    SupplyManager boundary;

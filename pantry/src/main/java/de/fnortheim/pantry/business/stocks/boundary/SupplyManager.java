@@ -1,6 +1,5 @@
 package de.fnortheim.pantry.business.stocks.boundary;
 
-import de.fnortheim.pantry.business.stocks.entity.FreezerSupply;
 import de.fnortheim.pantry.business.stocks.entity.Supply;
 
 import javax.ejb.Stateless;
