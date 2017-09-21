@@ -40,8 +40,7 @@
         </div>
     </nav>
 
-    <p:growl id="growl" life="4000" />
-
+    <p:growl id="growl" life="4000"/>
 
     <h:form prependId="false" id="editForm">
         <p:dialog header="Vorräte eingeben" widgetVar="dlg1" minHeight="140" id="editDialog">
@@ -51,11 +50,12 @@
                     <div class="panel-body">
                         <p:messages id="msgs" autoUpdate="true"/>
                         <h:panelGrid columns="2" cellpadding="5" id="editGrid">
-                            <h:outputText value="Beschreibung"/> <input jsf:id="item"
-                                                                        placeholder="Beschreibung eingeben" type="text"
-                                                                        required="true"
-                                                                        value="#{freezer.supply.item}"
-                                                                        class="form-control" tabindex="1"/>
+                            <p:outputLabel for="item" value="Beschreibung"/> <p:inputText id="item"
+                                                                              placeholder="Beschreibung eingeben"
+                                                                              required="true"
+                                                                              tabindex="1"
+                                                                              value="#{freezer.supply.item}"
+                                                                              class="form-control" />
                             <h:outputText value="Gewicht"/> <input jsf:id="weight" placeholder="Gewicht eingeben"
                                                                    type="text"
                                                                    value="#{freezer.supply.weight}" class="form-control"
@@ -69,6 +69,7 @@
                                                                                                  locale="de"
                                                                                                  navigator="true"
                                                                                                  pattern="dd.MM.yyyy"
+                                                                                                 mask="true"
                                                                                                  required="true"
                                                                                                  tabindex="4"/>
                             <p:outputLabel for="expiryDate" value="Ablaufdatum:"/> <p:calendar id="expiryDate"
@@ -76,6 +77,7 @@
                                                                                                locale="de"
                                                                                                navigator="true"
                                                                                                pattern="dd.MM.yyyy"
+                                                                                               mask="true"
                                                                                                tabindex="5"/>
                             <p:spacer height="10"/>
                             <f:facet name="footer">

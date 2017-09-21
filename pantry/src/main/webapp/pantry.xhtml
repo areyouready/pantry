@@ -50,11 +50,12 @@
                     <div class="panel-body">
                         <p:messages id="msgs" autoUpdate="true"/>
                         <h:panelGrid columns="2" cellpadding="5" id="editGrid">
-                            <h:outputText value="Beschreibung"/> <input jsf:id="item"
-                                                                        placeholder="Beschreibung eingeben" type="text"
-                                                                        required="true"
-                                                                        value="#{pantry.supply.item}"
-                                                                        class="form-control" tabindex="1"/>
+                            <p:outputLabel for="item" value="Beschreibung"/> <p:inputText id="item"
+                                                                                          placeholder="Beschreibung eingeben"
+                                                                                          required="true"
+                                                                                          value="#{pantry.supply.item}"
+                                                                                          tabindex="1"
+                                                                                          class="form-control" />
                             <h:outputText value="Gewicht"/> <input jsf:id="weight" placeholder="Gewicht eingeben"
                                                                    type="text"
                                                                    value="#{pantry.supply.weight}" class="form-control"
@@ -68,6 +69,7 @@
                                                                                                locale="de"
                                                                                                navigator="true"
                                                                                                pattern="dd.MM.yyyy"
+                                                                                               mask="true"
                                                                                                tabindex="4"/>
                             <p:spacer height="10"/>
                             <f:facet name="footer">
