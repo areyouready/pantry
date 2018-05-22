@@ -13,7 +13,10 @@ import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -45,6 +48,20 @@ public class Pantry implements Serializable {
         FacesContext.getCurrentInstance().addMessage("", message);
     }
 
+    public int dateSort(Object o1, Object o2) {
+        final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d.MM.yyyy", Locale.GERMANY);
+        final LocalDate date1 = o1 == null || (o1.equals(" ")) ? null : LocalDate.parse((String) o1, dtf);
+        final LocalDate date2 = o2 == null || (o2.equals(" ")) ? null : LocalDate.parse((String) o2, dtf);
+
+        if (date1 == null ||  date2 != null && date1.isBefore(date2)) {
+            return -1;
+        }
+        if (date2 == null || date1.isAfter(date2)) {
+            return 1;
+        }
+        return 0;
+    }
+
     public Object save() {
         final Set<ConstraintViolation<Supply>> violations = this.validator.validate(this.supply);
 
@@ -69,7 +86,7 @@ public class Pantry implements Serializable {
     }
 
     public List<Supply> getSupplies() {
-        if(this.supplyList == null) {
+        if (this.supplyList == null) {
             this.supplyList = this.boundary.findByType(PantrySupply.class);
         }
         return this.supplyList;

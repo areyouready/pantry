@@ -97,14 +97,15 @@
                                  update="editDialog" oncomplete="PF('dlg1').show();"/>
                 <div style="clear:both;"/>
             </f:facet>
-            <p:column headerText="Beschreibung" sortBy="#{supply.item}">
-                <h:outputText value="#{supply.item}"/>
+            <p:column headerText="Beschreibung" filterBy="#{supply.item}" sortBy="#{supply.item}" filterMatchMode="contains">
+                <h:outputText value="#{supply.item}" />
             </p:column>
             <p:column headerText="Gewicht" sortBy="#{supply.weight}">
                 <h:outputText value="#{supply.weight}"/>
             </p:column>
-            <p:column headerText="Ablaufdatum" sortBy="#{supply.formattedExpiryDate}">
-                <h:outputText value="#{supply.formattedExpiryDate}"/>
+            <p:column headerText="Ablaufdatum" filterBy="#{supply.formattedExpiryDate}" sortBy="#{supply.formattedExpiryDate}"
+                      sortFunction="#{pantry.dateSort}" filterMatchMode="contains">
+                <h:outputText value="#{supply.formattedExpiryDate}" />
             </p:column>
             <p:column headerText="Menge" sortBy="#{supply.quantity}">
                 <h:outputText value="#{supply.quantity}"/>
