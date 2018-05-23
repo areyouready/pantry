@@ -37,6 +37,7 @@ public class Pantry implements Serializable {
     Validator validator;
 
     private List<Supply> supplyList;
+    private List filteredSupplies;
 
     @PostConstruct
     public void init() {
@@ -101,5 +102,13 @@ public class Pantry implements Serializable {
 
     public void setSupply(PantrySupply supply) {
         this.supply = supply;
+    }
+
+    public void setFilteredSupplies(List filteredSupplies) {
+        this.filteredSupplies = filteredSupplies;
+    }
+
+    public List getFilteredSupplies() {
+        return filteredSupplies;
     }
 }

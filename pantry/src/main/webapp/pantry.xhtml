@@ -55,7 +55,7 @@
                                                                                           required="true"
                                                                                           value="#{pantry.supply.item}"
                                                                                           tabindex="1"
-                                                                                          class="form-control" />
+                                                                                          class="form-control"/>
                             <h:outputText value="Gewicht"/> <input jsf:id="weight" placeholder="Gewicht eingeben"
                                                                    type="text"
                                                                    value="#{pantry.supply.weight}" class="form-control"
@@ -88,7 +88,8 @@
 
     <p:spacer height="10"/>
     <h:form prependId="false" id="tableform">
-        <p:dataTable var="supply" value="#{pantry.supplies}" rows="10" paginator="true"
+        <p:dataTable widgetVar="dataTableSupply" var="supply" value="#{pantry.supplies}"
+                     filteredValue="#{pantry.filteredSupplies}" rows="10" paginator="true"
                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                      rowsPerPageTemplate="5,10,15" style="margin-bottom:40px" id="supplies">
             <f:facet name="header">
@@ -97,29 +98,31 @@
                                  update="editDialog" oncomplete="PF('dlg1').show();"/>
                 <div style="clear:both;"/>
             </f:facet>
-            <p:column headerText="Beschreibung" filterBy="#{supply.item}" sortBy="#{supply.item}" filterMatchMode="contains">
-                <h:outputText value="#{supply.item}" />
+            <p:column headerText="Beschreibung" filterBy="#{supply.item}" sortBy="#{supply.item}"
+                      filterMatchMode="contains">
+                <h:outputText value="#{supply.item}"/>
             </p:column>
             <p:column headerText="Gewicht" sortBy="#{supply.weight}">
                 <h:outputText value="#{supply.weight}"/>
             </p:column>
-            <p:column headerText="Ablaufdatum" filterBy="#{supply.formattedExpiryDate}" sortBy="#{supply.formattedExpiryDate}"
+            <p:column headerText="Ablaufdatum" filterBy="#{supply.formattedExpiryDate}"
+                      sortBy="#{supply.formattedExpiryDate}"
                       sortFunction="#{pantry.dateSort}" filterMatchMode="contains">
-                <h:outputText value="#{supply.formattedExpiryDate}" />
+                <h:outputText value="#{supply.formattedExpiryDate}"/>
             </p:column>
             <p:column headerText="Menge" sortBy="#{supply.quantity}">
                 <h:outputText value="#{supply.quantity}"/>
             </p:column>
             <p:column style="width:100px; text-align: center">
                 <p:commandButton update=":editDialog" oncomplete="PF('dlg1').show()" icon="ui-icon-search"
-                                 title="View">
+                                 title="View" onsuccess="PF('dataTableSupply').filter();">
                     <f:setPropertyActionListener value="#{supply}" target="#{pantry.supply}"/>
                 </p:commandButton>
                 <p:commandButton icon="ui-icon-trash"
                                  title="Delete this actor"
                                  action="#{pantry.delete}"
-                                 ajax="false"
-                                 update="supplies">
+                                 update="supplies"
+                                 onsuccess="PF('dataTableSupply').filter();">
                     <f:setPropertyActionListener value="#{supply}" target="#{pantry.supply}"/>
                 </p:commandButton>
             </p:column>
